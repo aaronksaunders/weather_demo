@@ -6,36 +6,36 @@ class WeatherSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQueryData = MediaQuery.of(context);
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
       height: mediaQueryData.size.height - 200.0,
       child: PageView(
         scrollDirection: Axis.horizontal,
         controller: controller,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(40),
+            padding: const EdgeInsets.all(40),
             child: Container(
               // color: Colors.red,
               child: WeatherCard(),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Container(
               color: Colors.blue,
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Container(
               color: Colors.green,
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Container(
               color: Colors.yellow,
             ),

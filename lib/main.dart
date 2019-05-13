@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Weather App'),
     );
   }
 }
@@ -30,25 +30,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   void _incrementCounter() {
-    setState(() { });
+    setState(() {});
   }
 
-  Future getMyLocation() async {
-    var _locationService = new Location();
-    bool serviceStatus = await _locationService.serviceEnabled();
-    print("Service status: $serviceStatus");
+  Future<String> getMyLocation() async {
+    final Location _locationService = Location();
+    final bool serviceStatus = await _locationService.serviceEnabled();
+    print('Service status: $serviceStatus');
 
-    var d = await _locationService.getLocation();
+    final LocationData d = await _locationService.getLocation();
 
-    return "location ${d.latitude} , ${d.longitude}, ${d.time} ";
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+    return 'location ${d.latitude} , ${d.longitude}, ${d.time} ';
   }
 
   @override
@@ -59,15 +52,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: FutureBuilder<Object>(
           future: getMyLocation(),
-          builder: (context, snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<Object> snapshot) {
+            
             switch (snapshot.connectionState) {
               case ConnectionState.none:
-                //return Text('Press button to start.');
+              //return Text('Press button to start.');
               case ConnectionState.active:
               case ConnectionState.waiting:
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               case ConnectionState.done:
-                if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.red,
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

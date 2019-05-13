@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class WeatherCard extends StatelessWidget {
   final List<String> _list =
-      List<String>.generate(12, (int i) => "Heading (${i + 1})");
+      List<String>.generate(12, (int i) => 'Heading (${i + 1})');
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.red,
         // border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
+        boxShadow: const <BoxShadow>[
           BoxShadow(
               color: Colors.black87, blurRadius: 30, offset: Offset(10, 10))
         ],
@@ -23,7 +23,7 @@ class WeatherCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 5),
               child: Text(
-                "Washington DC",
+                'Washington DC',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
               ),
@@ -31,7 +31,7 @@ class WeatherCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
               child: Text(
-                "Sunny",
+                'Sunny',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
@@ -39,7 +39,7 @@ class WeatherCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 1, 10, 20),
               child: Text(
-                "97",
+                '97',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 48),
               ),
@@ -47,7 +47,10 @@ class WeatherCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "This is the weather card description for the current weather in plain text for the reader",
+                '''
+                This is the weather card description for the 
+                current weather in plain text for the reader
+                ''',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18),
               ),
@@ -60,29 +63,34 @@ class WeatherCard extends StatelessWidget {
   }
 }
 
+@immutable
 class WeatherByHour extends StatelessWidget {
+  const WeatherByHour(this.hourlyWeather);
+
+  static const EdgeInsets rowEdgeInsets =
+      EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5);
+
   // Builder methods rely on a set of data, such as a list.
   final List<String> hourlyWeather;
-
-  WeatherByHour(this.hourlyWeather);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
         child: Container(
-      padding: EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: _buildList(context),
     ));
   }
 
-  ListView _buildList(context) {
+  ListView _buildList(BuildContext context) {
     return ListView.builder(
       itemCount: hourlyWeather.length,
-      itemBuilder: (context, int) {
-        return Row(children: [
+      itemBuilder: (BuildContext context, int index) {
+        return Row(children: <Widget>[
           Container(
-              padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-              child: Text(hourlyWeather[int]))
+              padding:
+                  const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+              child: Text(hourlyWeather[index]))
         ]);
       },
     );
