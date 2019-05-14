@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 class WeatherCard extends StatelessWidget {
   final List<String> _list =
       List<String>.generate(12, (int i) => 'Heading (${i + 1})');
+  final String title;
+  final int temp;
+
+  WeatherCard({this.title, this.temp});
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(38),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: Colors.indigo[200],
         // border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(20),
         boxShadow: const <BoxShadow>[
@@ -23,7 +29,7 @@ class WeatherCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 20, 10, 5),
               child: Text(
-                'Washington DC',
+                this.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
               ),
@@ -39,7 +45,7 @@ class WeatherCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 1, 10, 20),
               child: Text(
-                '97',
+                this.temp.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 48),
               ),
@@ -47,10 +53,7 @@ class WeatherCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                '''
-                This is the weather card description for the 
-                current weather in plain text for the reader
-                ''',
+                "This is the weather card description for the current weather in plain text for the reader",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18),
               ),

@@ -4,6 +4,14 @@ import 'package:weather_demo/weather_card.dart';
 class WeatherSlider extends StatelessWidget {
   final PageController controller = PageController();
 
+  List<Widget> _generateSlides() {
+    return [
+      WeatherCard(title: "Washington DC", temp: 89),
+      WeatherCard(title: "Ocean City, MD", temp: 81),
+      WeatherCard(title: "Silver Spring, MD", temp: 84)
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
@@ -14,33 +22,7 @@ class WeatherSlider extends StatelessWidget {
       child: PageView(
         scrollDirection: Axis.horizontal,
         controller: controller,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(40),
-            child: Container(
-              // color: Colors.red,
-              child: WeatherCard(),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Container(
-              color: Colors.blue,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Container(
-              color: Colors.green,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Container(
-              color: Colors.yellow,
-            ),
-          ),
-        ],
+        children: _generateSlides(),
       ),
     );
   }

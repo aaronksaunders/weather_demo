@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
       home: MyHomePage(title: 'Flutter Weather App'),
     );
@@ -79,9 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
             }
           }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'New Location',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
