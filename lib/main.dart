@@ -67,10 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 return Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+//                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(
-                        snapshot.data,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 18.0, bottom: 0.0),
+                        child: Text(
+                          snapshot.data,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                       WeatherSlider(),
                     ],
@@ -78,11 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
             }
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'New Location',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+//      floatingActionButton: FloatingActionButton(
+//        onPressed: _incrementCounter,
+//        tooltip: 'New Location',
+//        child: const Icon(Icons.add),
+//      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

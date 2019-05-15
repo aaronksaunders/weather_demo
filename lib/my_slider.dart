@@ -16,9 +16,7 @@ class WeatherSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
-      height: mediaQueryData.size.height - 200.0,
+    return Expanded(
       child: PageView(
         scrollDirection: Axis.horizontal,
         controller: controller,
